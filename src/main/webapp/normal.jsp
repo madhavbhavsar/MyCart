@@ -14,24 +14,12 @@
 		   session.setAttribute("message", "You are not Normal User !! Do not access this page");
 		   
 		   response.sendRedirect("login.jsp");
+	   } else {
+		   response.sendRedirect("index.jsp");
 	   }
    }
 
 %>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

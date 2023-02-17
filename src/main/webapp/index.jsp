@@ -76,7 +76,7 @@
 	      	    %>
 	      	    <div class="card">
 	      	    	<div class="container text-center">
-	      	    	<img alt="..." style="max-height:200px; max-width:100px; width:auto;" src="img/products/<%= p.getpPhoto()%>" class="card-img-top m-2">		
+	      	    	<img alt="..." style="height:200px; width:100px; width:auto;" src="img/products/<%= p.getpPhoto()%>" class="card-img-top m-2">		
 	      	   
 	      	    	
 	      	    	</div>
