@@ -2,7 +2,7 @@
 <%
 User user1=(User)session.getAttribute("current-user");
 %>
-<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
+<nav class="navbar navbar-expand-lg navbar-light navbar-nav mr-auto" style="background-color: #e3f2fd;">
   <div class="container">
      <a class="navbar-brand" href="#">
     <img src="./img/logo/logo1.png" width="100" height="40" alt="">
@@ -49,11 +49,11 @@ User user1=(User)session.getAttribute("current-user");
           <a class="nav-link" href="register.jsp">Register</a>
        </li>
        <%
-      }else
+      } else
       {
     	 %>
     	 
-    	 <li class="nav-item active">
+     <li class="nav-item active">
         <a class="nav-link" href="<%=user1.getUserType().equals("admin")?"admin.jsp":"normal.jsp" %>"><%=user1.getUserName() %> </a>
      </li>
      <li class="nav-item active">
