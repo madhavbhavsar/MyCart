@@ -4,6 +4,12 @@
 <%@page import="com.learn.mycart.helper.FactoryProvider"%>
 <%@page import="com.learn.mycart.dao.*"%>
 <%@page import="com.learn.mycart.entities.*"%>
+	<%@page import="java.util.ArrayList" %>
+<%@page import="java.util.Scanner" %>
+
+
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 
 <%
 	User user = (User) session.getAttribute("current-user");
@@ -22,16 +28,12 @@
 <%
 							CategoryDao cdao = new CategoryDao(FactoryProvider.getFactory());
 							List<Category> list = cdao.getCategories();
+							
+							BillsDao bdao = new BillsDao(FactoryProvider.getFactory());
+							List<Bills> blist = bdao.getAllBills();
 						    
 							Map<String, Long> m= Helper.getCounts(FactoryProvider.getFactory());
 						%>
-
-
-
-
-
-
-
 
 
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
@@ -140,9 +142,125 @@
 				</div>
 			</div>
 		</div>
+		
+		<!-- second row -->
+		<div class="row mt-3">
+			<!-- first column -->
+			<div class="col-md-6">
+				<div class="card" data-toggle="modal"
+					data-target="#add-category-modal">
+					<div class="card-body text-center ">
+						
+						<p class="mt-2"> </p>
+						<h1> Extra </h1>
+					</div>
+				</div>
+			</div>
+
+			<!-- second column -->
+			<div class="col-md-6">
+				<div class="card" data-toggle="modal"
+					data-target="#show-bill-modal">
+					<div class="card-body text-center">
+						
+						<p class="mt-2"> </p>
+						<h1>View Orders </h1>
+					</div>
+				</div>
+			</div>
+		</div>
+		</br></br>
 	</div>
 
 	<!-- modal -->
+	
+	<div class="modal fade" id="show-bill-modal" tabindex="-1"
+		role="dialog" aria-labelledby="exampleModalCenterTitle"
+		aria-hidden="true">
+		<div class="modal-dialog modal-lg" role="document">
+			<div class="modal-content">
+				<div class="modal-header custom-bg text-white">
+					<h5 class="modal-title" id="exampleModalLabel">Current Orders</h5>
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<div align="center">
+<table class=table>
+<thead>
+<tr>
+<th scope="col">Order Id</th>
+<th scope="col">Order Name</th>
+<th scope="col">Order Email</th>
+<th scope="col">Order Address</th>
+<th scope="col">Order Phone</th>
+
+
+</tr>
+
+</thead>
+
+<tbody>
+
+<%  for(Bills i: blist) { %>
+
+<tr>
+<th scope="row"><%= i.getBillId() %></th>
+<td><%= i.getBillName() %></td>
+<td><%= i.getBillEmail() %></td>
+<td><%= i.getBillAdd() %></td>
+<td><%= i.getBillPhone() %></td>
+
+
+</tr>
+
+<tr>
+<td></td>
+<th scope="col"> Item Name</th>
+<th scope="col"> Item Quantity</th>
+<th scope="col"> Item Price</th>
+<th scope="col"> Total Price</th>
+</tr>
+<% 
+String[] pn = i.getBillItems().split(",");
+String[] pq = i.getBillItemsQuantity().split(",");
+String[] pp = i.getBillItemsPrice().split(",");
+String[] ptp = i.getBillItemsTprice().split(",");
+
+%>
+<%  for(int it =0 ; it<pn.length; it++) { %>
+<tr>
+<td></td>
+<td><%= pn[it] %></td>
+<td><%= pq[it] %></td>
+<td><%= pp[it] %></td>
+<td><%= ptp[it] %></td>
+</tr>
+<% } %>
+
+  <% } %>
+
+
+
+
+</tbody>
+
+
+
+
+</table>
+
+<br/><br/>
+
+</div>
+					
+				
+				</div>
+			</div>
+		</div>
+	</div>
 
 
 	<!-- Modal -->

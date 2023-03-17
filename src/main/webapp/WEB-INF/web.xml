@@ -40,6 +40,12 @@
   	<description></description>
   	<servlet-class>com.learn.mycart.dao.ProductDao</servlet-class>
   </servlet>
+  <servlet>
+  	<servlet-name>BillsServlet</servlet-name>
+  	<display-name>BillsServlet</display-name>
+  	<description></description>
+  	<servlet-class>com.learn.mycart.servlets.BillsServlet</servlet-class>
+  </servlet>
   <servlet-mapping>
   	<servlet-name>RegisterServlet</servlet-name>
   	<url-pattern>/RegisterServlet</url-pattern>
@@ -63,6 +69,10 @@
   <servlet-mapping>
   	<servlet-name>ProductDao</servlet-name>
   	<url-pattern>/ProductDao</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>BillsServlet</servlet-name>
+  	<url-pattern>/BillsServlet</url-pattern>
   </servlet-mapping>
   
 </web-app>

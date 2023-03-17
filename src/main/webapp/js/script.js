@@ -114,8 +114,6 @@ if(cart==null || cart.length==0)
 		console.log("removed")
 		
 		
-		
-		
 	}
 
 }
@@ -139,6 +137,9 @@ $(document).ready(function(){
 function gotoCheckout(){
 	window.location="checkout.jsp"
 }
+
+
+
 
 
 

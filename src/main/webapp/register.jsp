@@ -17,6 +17,8 @@
          <%@include file="components/message.jsp" %>
             <div class="card-body px-5">
                <h3 class="text-center my-3">Sign Up here</h3>
+               
+               
                <form action="RegisterServlet" method="post">
   <div class="form-group">
     <label for="user">User Name</label>
